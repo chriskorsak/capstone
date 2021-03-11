@@ -40,9 +40,8 @@ Users who are logged in will have a 'dashboard' which allows them to see their a
 ## Admin
 This utilizes the Django admin app in order to take care of site administration. Site administrators can create and publish blog posts, respond to user feedback submissions, and monitor comments.
 * Django models displayed in the Django admin app: (User, Post, Feedback, and Comment).
-* Administrators can flag posts as published, unpublished, free, or premium.
 
-# Project Complexity
+## Project Complexity
 I believe this project satisfies the complexity requirements and is disinct from the previous class projects for the following reasons:
 
 * This project is essentially a blog, which is a website structure we have not attempted in the class.
@@ -58,3 +57,6 @@ TODO (list contents of files I created)
 
 TODO
 <!-- If you’ve added any Python packages that need to be installed in order to run your web application, be sure to add them to a requirements.txt file! -->
+
+<!-- * Administrators can flag posts as published, unpublished, free, or premium. -->
+

@@ -11,9 +11,14 @@ from .models import *
 
 ### VIEWS
 
+def index(request):
+  return render(request, "ckblues/index.html")
+
 def register(request):
   if request.method == "POST":
     # get form inputs
+    firstname = request.POST["first-name"]
+    lastname = request.POST["last-name"]
     username = request.POST["username"]
     email = request.POST["email"]
     password = request.POST["password"]
@@ -28,6 +33,8 @@ def register(request):
     # try to create new user
     try:
       user = User.objects.create_user(username, email, password)
+      user.first_name = firstname
+      user.last_name = lastname
       user.save()
     except IntegrityError:
       return render(request, "ckblues/register.html", {
@@ -35,7 +42,7 @@ def register(request):
       })
     # log in user after registration
     login(request, user)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("dashboard", args=(username,)))
 
   else:
     return render(request, "ckblues/register.html")
@@ -47,7 +54,7 @@ def loginView(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
       login(request, user)
-      return HttpResponseRedirect(reverse("index"))
+      return HttpResponseRedirect(reverse("dashboard", args=(username,)))
     else:
       return render(request, "ckblues/login.html", {
       "message": "Invalid username and/or password."
@@ -58,9 +65,6 @@ def loginView(request):
 def logoutView(request):
   logout(request)
   return HttpResponseRedirect(reverse("index"))
-
-def index(request):
-  return render(request, "ckblues/index.html")
 
 def dashboard(request, username):
   return render(request, "ckblues/dashboard.html", {

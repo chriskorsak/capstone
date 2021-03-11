@@ -10,7 +10,7 @@ My Harvard CS50 Web capstone is called __*CK Blues*__. This is a web application
 ### Login/Logout/Register
 In order to access 'premium' content, the user has to register and log in to their account. Users will be asked to provide credentials to register and/or log in.
 #### Login/Logout/Register Behavior
-* When a user navigates to the registration page, they will be asked to provide a username, password (twice), and an email address. The application will verify these inputs and redirect to the user dashboard if successful.
+* When a user navigates to the registration page, they will be asked to provide a first name, last name, username, password (twice), and an email address. The application will verify these inputs and redirect the user to a newly created user dashboard if successful.
 * When a user navigates to the login page, they will be asked to provide a username and password. The application will verfiy these inputs and redirect to the user dashboard if successful.
 * Clicking the logout link in the navigation will log the user out and redirect the user to the homepage.
 

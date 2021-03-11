@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-
+from django.db import IntegrityError
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.urls import reverse
+
+from .models import User
 
 ### VIEWS
 
@@ -25,7 +27,7 @@ def register(request):
       user = User.objects.create_user(username, email, password)
       user.save()
     except IntegrityError:
-      return render(request, "network/register.html", {
+      return render(request, "ckblues/register.html", {
         "message": "Username already taken."
       })
     # log in user after registration
@@ -39,11 +41,15 @@ def login(request):
   if request.method == "POST":
     username = request.POST["username"]
     password = request.POST["password"]
-    print(username, password)
-    user = authenticate(request, username=usernamme, password=password)
+    user = authenticate(request, username=username, password=password)
+    print(f"THIS IS USER: {user}")
     if user is not None:
       login(request, user)
       return HttpResponseRedirect(reverse("index"))
+    else:
+      return render(request, "ckblues/login.html", {
+      "message": "Invalid username and/or password."
+      })
   else:
     return render(request, "ckblues/login.html")
 
@@ -53,3 +59,4 @@ def logout(request):
 
 def index(request):
   return render(request, "ckblues/index.html")
+

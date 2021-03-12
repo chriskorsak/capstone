@@ -71,6 +71,34 @@ def dashboard(request, username):
     "username": username
   })
 
+def setPassword(request, username):
+  if request.method == "POST":
+    # get form inputs
+    email = request.POST["email"]
+    password = request.POST["password"]
+    confirmation = request.POST["confirmation"]
+    
+    #get user object
+    user = User.objects.get(username=username)
+
+    if password and confirmation:
+      # make sure passwords match
+      if password != confirmation:
+        return render(request, "ckblues/index.html", {
+          "message": "New passwords must match."
+        })
+      else:
+        #update password
+        user.set_password(password)
+    
+    if email:
+      user.email = email
+
+    #save any email and/or password updates
+    user.save()
+  return HttpResponseRedirect(reverse("login"))
+
+
 def feedback(request):
   return render(request, "ckblues/feedback.html")
 

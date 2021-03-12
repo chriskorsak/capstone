@@ -7,5 +7,6 @@ urlpatterns = [
     path("login", views.loginView, name="login"),
     path("logout", views.logoutView, name="logout"),
     path("dashboard/<str:username>", views.dashboard, name="dashboard"),
+    path("setpassword/<str:username>", views.setPassword, name="set-password"),
     path("feedback", views.feedback, name="feedback")
 ]

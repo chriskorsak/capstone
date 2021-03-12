@@ -25,19 +25,21 @@ The main section of this website is a blog that is filled with content (both fre
 * Users will be able to comment on posts if logged in to the website. Comments will be displayed whether the user is logged in or not.
 * Only 10 posts will display on a page, and pagination links to navigate to more articles will be displayed at the bottom of the page.
 
-## Feedback
+### Feedback
 In this section of the website, users can submit a form which allows them to receive feedback (aka critique) on their guitar playing. Users will be able to submit a link to a youtube video of themselves playing a song, improvising, or using a playing technique they'd like feedback with.
 #### Feedback Behavior
 * When logged in, a link called *feedback* will be displayed in the navigation section. If a user clicks on this link, they will be directed to the feedback submission page.
 * The feedback page will display a form where the user can submit a youtube video link, select the video category from a dropdown menu (cover song, improvisation, technique), and describe any questions or comments about their video submission.
 * Successfully submitting a feedback form will notify the user that their form has been received and is in the queue for review.
 
-## User Dashboard
+### User Dashboard
+#### User Dashboard Behavior
 Users who are logged in will have a 'dashboard' which allows them to see their account details and their feedback submissions.
 * The dashboard will display a list of all feedbacks that have been submitted. Clicking on a feedback link will direct the user to a feedback page that displays a video screencast and any comments from the site administrator.
 * Users can update their email or password credentials via dashboard settings.
 
-## Admin
+### Admin
+### Admin Behavior
 This utilizes the Django admin app in order to take care of site administration. Site administrators can create and publish blog posts, respond to user feedback submissions, and monitor comments.
 * Django models displayed in the Django admin app: (User, Post, Feedback, and Comment).
 

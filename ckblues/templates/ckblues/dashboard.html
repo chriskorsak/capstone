@@ -4,4 +4,20 @@
 {% block body %}
   <h2>{{ username }}</h2> 
   <h2>TODO DASHBOARD</h2>
+  <section>
+    <h3>Change password</h3>
+    <form action="{% url 'set-password' username %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <input class="form-control" type="email" name="email" placeholder="New email">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="New password">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="confirmation" placeholder="Confirm new password">
+      </div>
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+  </section>
 {% endblock %}

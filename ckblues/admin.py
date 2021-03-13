@@ -7,6 +7,7 @@ class UserAdmin(admin.ModelAdmin):
 
 class PostAdmin(admin.ModelAdmin):
   list_display = ("author", "date", "title", "category", "premium", "published")
+  prepopulated_fields = {"slug": ("title",)}
 
 class PostCommentAdmin(admin.ModelAdmin):
   list_display = ("user", "date", "comment", "post")

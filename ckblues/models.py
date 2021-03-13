@@ -9,6 +9,7 @@ class Post(models.Model):
   author = models.ForeignKey(User, on_delete=models.CASCADE)
   date = models.DateTimeField(auto_now_add=True)
   title = models.CharField(max_length=256)
+  slug = models.SlugField(max_length=50, blank=True)
   body = RichTextField(blank=True, null=True)
   excerpt = models.CharField(max_length=512, blank=True)
   category = models.CharField(max_length=64, blank=True)

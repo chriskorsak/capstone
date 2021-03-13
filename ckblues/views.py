@@ -13,7 +13,8 @@ from .models import *
 
 def index(request):
   return render(request, "ckblues/index.html", {
-  "posts": Post.objects.filter(published=True)
+  "freePosts": Post.objects.filter(published=True).filter(premium=False).order_by('-date'),
+  "allPosts": Post.objects.filter(published=True).order_by('-date')
   })
 
 def register(request):

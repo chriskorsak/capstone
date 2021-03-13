@@ -3,10 +3,23 @@
 
 {% block body %}
   <h2>CK Blues: Blog</h2>
-  {% for post in posts %}
-    <section>
-      <h3>{{ post.title }}</h3>
-      <p>{{ post.excerpt }}</p>
-    </section>
-  {% endfor %}
+  {% if user.is_authenticated %}
+    <!-- display all posts if user is logged in -->
+    {% for post in allPosts %}
+      <section class="post">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+      </section>
+    {% endfor %}
+  {% else %}
+    <!-- display all free posts if user not logged in -->
+    {% for post in freePosts %}
+      <section class="post">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+      </section>
+    {% endfor %}
+  {% endif %}
+
+
 {% endblock %}

@@ -41,19 +41,24 @@ Users who are logged in will have a 'dashboard' which allows them to see their a
 ### Admin
 ### Admin Behavior
 This utilizes the Django admin app in order to take care of site administration. Site administrators can create and publish blog posts, respond to user feedback submissions, and monitor comments.
-* Django models displayed in the Django admin app: (User, Post, Feedback, and Comment).
+* Django models displayed in the Django admin app: (User, Post, PostComment, Feedback, FeedbackComment).
 
 ## Project Complexity
 I believe this project satisfies the complexity requirements and is disinct from the previous class projects for the following reasons:
 
-* This project is essentially a blog, which is a website structure we have not attempted in the class.
-* This project uses four Django models, which keep track of a variety of website data.
-* Because blog post content can be diverse, a user-friendly way to create this content is needed. I have implimented using a rich text editor?? markdown?? to achieve this. (rich text editor: https://www.youtube.com/watch?v=mF5jzSXb1dc)
-* I put a lot of effort into the content in addition to the site functionality so it can useful for guitar players.
+* This project is modeled as a blog, which is a website structure we have not attempted in the class.
+* This project uses five Django models, which is more than any project I've created in this class.
+* Because blog post content can be diverse, a user-friendly way to create this content is needed. I have implimented using a pre-made rich text editor called *ckeditor* to achieve this. (rich text editor: https://www.youtube.com/watch?v=mF5jzSXb1dc)
 
 ## File Contents
 
 TODO (list contents of files I created)
+
+## Technologies Used
+* Django (Python)
+* HTML
+* CSS
+* Javascript
 
 ## How To Run This Application
 

@@ -7,7 +7,7 @@
     <!-- display all posts if user is logged in -->
     {% for post in allPosts %}
       <section class="post">
-        <h3>{{ post.title }}</h3>
+        <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
         <p>{{ post.excerpt }}</p>
       </section>
     {% endfor %}
@@ -15,7 +15,7 @@
     <!-- display all free posts if user not logged in -->
     {% for post in freePosts %}
       <section class="post">
-        <h3>{{ post.title }}</h3>
+        <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
         <p>{{ post.excerpt }}</p>
       </section>
     {% endfor %}

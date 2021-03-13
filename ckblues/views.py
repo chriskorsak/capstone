@@ -17,6 +17,12 @@ def index(request):
   "allPosts": Post.objects.filter(published=True).order_by('-date')
   })
 
+def post(request, slug):
+  post = Post.objects.get(slug=slug)
+  return render(request, "ckblues/post.html", {
+    "post": post
+  })
+
 def register(request):
   if request.method == "POST":
     # get form inputs

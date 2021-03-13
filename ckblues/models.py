@@ -9,15 +9,14 @@ class Post(models.Model):
   author = models.ForeignKey(User, on_delete=models.CASCADE)
   date = models.DateTimeField(auto_now_add=True)
   title = models.CharField(max_length=256)
-  ### need to figure out rich text editor for this field
   body = RichTextField(blank=True, null=True)
-
+  excerpt = models.CharField(max_length=512, blank=True)
   category = models.CharField(max_length=64, blank=True)
   premium = models.BooleanField(default=False)
-  status = models.BooleanField(default=False)
+  published = models.BooleanField(default=False)
   
   def __str__(self):
-        return f"{self.creator} {self.date} {self.likes}"
+        return f"{self.author} {self.date} {self.title}"
 
 class PostComment(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block body %}
-  <h2>{{ username }}</h2> 
-  <h2>TODO DASHBOARD</h2>
+  <h2>Hello {{ username }}!</h2> 
   <section>
     <h3>Change password</h3>
     <form action="{% url 'set-password' username %}" method="POST">

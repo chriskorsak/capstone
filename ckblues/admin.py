@@ -6,7 +6,7 @@ class UserAdmin(admin.ModelAdmin):
   list_display = ("username", "first_name", "last_name", "email", "id")
 
 class PostAdmin(admin.ModelAdmin):
-  list_display = ("author", "date", "title", "body", "category", "premium", "status")
+  list_display = ("author", "date", "title", "body", "excerpt", "category", "premium", "published")
 
 class PostCommentAdmin(admin.ModelAdmin):
   list_display = ("user", "date", "comment", "post")

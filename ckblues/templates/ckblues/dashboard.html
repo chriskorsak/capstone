@@ -4,8 +4,8 @@
 {% block body %}
   <h2>Hello {{ username }}!</h2> 
   <section>
-    <h3>Change password</h3>
-    <form action="{% url 'set-password' username %}" method="POST">
+    <h3>Update email/password</h3>
+    <form action="{% url 'update-credentials' username %}" method="POST">
       {% csrf_token %}
       <div class="form-group">
         <input class="form-control" type="email" name="email" placeholder="New email">

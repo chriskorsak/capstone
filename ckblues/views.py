@@ -12,7 +12,9 @@ from .models import *
 ### VIEWS
 
 def index(request):
-  return render(request, "ckblues/index.html")
+  return render(request, "ckblues/index.html", {
+  "posts": Post.objects.filter(published=True)
+  })
 
 def register(request):
   if request.method == "POST":
@@ -71,7 +73,7 @@ def dashboard(request, username):
     "username": username
   })
 
-def setPassword(request, username):
+def updateCredentials(request, username):
   if request.method == "POST":
     # get form inputs
     email = request.POST["email"]

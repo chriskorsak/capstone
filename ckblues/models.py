@@ -1,18 +1,19 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class User(AbstractUser):
   pass
 
 class Post(models.Model):
-  creator = models.ForeignKey(User, on_delete=models.CASCADE)
+  author = models.ForeignKey(User, on_delete=models.CASCADE)
   date = models.DateTimeField(auto_now_add=True)
-  title = models.CharField(max_length=64)
-  
+  title = models.CharField(max_length=256)
   ### need to figure out rich text editor for this field
-  text = models.TextField()
+  body = RichTextField(blank=True, null=True)
 
   category = models.CharField(max_length=64, blank=True)
+  premium = models.BooleanField(default=False)
   status = models.BooleanField(default=False)
   
   def __str__(self):
@@ -29,8 +30,9 @@ class PostComment(models.Model):
 
 class Feedback(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
+  date = models.DateTimeField(auto_now_add=True)
   video = models.URLField(max_length=200, blank=True)
-  comment = models.CharField(max_length=256)
+  note = models.CharField(max_length=256)
 
   def __str__(self):
     return f"User:{self.user} User:{self.video} Comment:{self.comment}"
@@ -40,3 +42,6 @@ class FeedbackComment(models.Model):
   date = models.DateTimeField(auto_now_add=True)
   comment = models.CharField(max_length=256)
   feedback = models.ForeignKey(Feedback, on_delete=models.CASCADE, related_name="feedbackComments")
+
+  def __str__(self):
+    return f"Date:{self.date} User:{self.user} Comment:{self.comment}"

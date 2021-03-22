@@ -17,6 +17,13 @@ def index(request):
   "allPosts": Post.objects.filter(published=True).order_by('-date')
   })
 
+def filter(request, category):
+  print(category)
+  return render(request, "ckblues/index.html", {
+  "freeFilteredPosts": Post.objects.filter(category=category).filter(published=True).filter(premium=False).order_by('-date'),
+  "allFilteredPosts": Post.objects.filter(category=category).filter(published=True).order_by('-date')
+  })
+
 def post(request, slug):
   post = Post.objects.get(slug=slug)
   return render(request, "ckblues/post.html", {

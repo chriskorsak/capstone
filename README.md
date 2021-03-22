@@ -33,14 +33,14 @@ In this section of the website, users can submit a form which allows them to rec
 * Successfully submitting a feedback form will notify the user that their form has been received and is in the queue for review.
 
 ### User Dashboard
-#### User Dashboard Behavior
 Users who are logged in will have a 'dashboard' which allows them to see their account details and their feedback submissions.
+#### User Dashboard Behavior
 * The dashboard will display a list of all feedbacks that have been submitted. Clicking on a feedback link will direct the user to a feedback page that displays a video screencast and any comments from the site administrator.
 * Users can update their email or password credentials via dashboard settings.
 
 ### Admin
-### Admin Behavior
 This utilizes the Django admin app in order to take care of site administration. Site administrators can create and publish blog posts, respond to user feedback submissions, and monitor comments.
+### Admin Behavior
 * Django models displayed in the Django admin app: (User, Post, PostComment, Feedback, FeedbackComment).
 
 ## Project Complexity

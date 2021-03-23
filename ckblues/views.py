@@ -13,34 +13,25 @@ from .models import *
 
 def index(request):
   # all posts: create blank dict for storing categories and post counts with that category
-  allCategories = {}
-  allPosts = Post.objects.filter(published=True).order_by('category')
-  # iterate through posts and add category if not in dict, or increment if already in dict
-  for post in allPosts:
-    if post.category not in allCategories:
-      allCategories[post.category] = 1
-    else:
-      allCategories[post.category] += 1
+  if request.user.is_authenticated:
+    posts = Post.objects.filter(published=True).order_by('-date')
+  else:
+    posts = Post.objects.filter(published=True).filter(premium=False).order_by('-date')
 
-  # free posts: create blank dict for storing categories and post counts with that category
-  freeCategories = {}
-  freePosts = Post.objects.filter(published=True).filter(premium=False).order_by('category')
+  categories = {}
   # iterate through posts and add category if not in dict, or increment if already in dict
-  for post in freePosts:
-    if post.category not in freeCategories:
-      freeCategories[post.category] = 1
+  for post in posts:
+    if post.category not in categories:
+      categories[post.category] = 1
     else:
-      freeCategories[post.category] += 1
+      categories[post.category] += 1
 
   return render(request, "ckblues/index.html", {
-  "freePosts": Post.objects.filter(published=True).filter(premium=False).order_by('-date'),
-  "allPosts": Post.objects.filter(published=True).order_by('-date'),
-  "allCategories": allCategories,
-  "freeCategories": freeCategories
+  "posts": posts,
+  "categories": sorted(categories)
   })
 
 def filterCategory(request, category):
-  print(category)
   return render(request, "ckblues/index.html", {
   "freeFilteredPosts": Post.objects.filter(category=category).filter(published=True).filter(premium=False).order_by('-date'),
   "allFilteredPosts": Post.objects.filter(category=category).filter(published=True).order_by('-date')

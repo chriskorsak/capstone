@@ -3,38 +3,22 @@
 
 {% block body %}
   <h2>CK Blues: Blog</h2>
-  {% if user.is_authenticated %}
-    <!-- display all posts if user is logged in -->
-    {% for post in allPosts %}
-      <section class="post">
-        <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt }}</p>
-      </section>
-    {% endfor %}
-  {% else %}
-    <!-- display all free posts if user not logged in -->
-    {% for post in freePosts %}
-      <section class="post">
-        <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt }}</p>
-      </section>
-    {% endfor %}
-  {% endif %}
+
+  {% for post in posts %}
+    <section class="post">
+      <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
+      <p>{{ post.excerpt }}</p>
+    </section>
+  {% endfor %}
 
   <h3>Filter Blog Posts:</h3>
-  {% if user.is_authenticated %}
     <ul>
-      {% for category in allCategories %}
-      <li><a href="{% url 'filterCategory' category %}">{{ category }}</a></li>
+      {% for category in categories %}
+        <li><a href="{% url 'filterCategory' category %}">{{ category }}</a></li>
+      {% empty %}
+        <li><a href="{% url 'index' %}">Home</a></li>
       {% endfor %}
     </ul>
-  {% else %}
-    <ul>
-      {% for category in freeCategories %}
-      <li><a href="{% url 'filterCategory' category %}">{{ category }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
 
   {% if user.is_authenticated %}
   <!-- display all filtered content if logged in -->

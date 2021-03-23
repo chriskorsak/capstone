@@ -19,7 +19,7 @@ The main section of this website is a blog that is filled with content (both fre
 #### Blog Behavior
 * When a user navigates to the homepage, the blog will be populated with a number of 'free' posts that do not require the user to log in.
 * When a user is logged in, the blog will be populated with both 'free' and 'premium' content.
-* Users can filter blog posts by category to more easily find content they are looking for (lessons, exercises, backing tracks, free, premium).
+* Users can filter blog posts by category to more easily find content they are looking for (lessons, exercises, backing tracks).
 * Blog posts will display only a title and excerpt on the main blog page.
 * When a user clicks on a post title, the user will be taken to the blog post page where the entire post is displayed.
 * Users will be able to comment on posts if logged in to the website. Comments will be displayed whether the user is logged in or not.

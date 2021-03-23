@@ -22,10 +22,19 @@
   {% endif %}
 
   <h3>Filter Blog Posts:</h3>
-  <ul>
-    <li><a href="{% url 'filter' 'Lessons' %}">Lessons</a></li>
-    <li><a href="{% url 'filter' 'Backing Tracks' %}">Backing Tracks</a></li>
-  </ul>
+  {% if user.is_authenticated %}
+    <ul>
+      {% for category in allCategories %}
+      <li><a href="{% url 'filterCategory' category %}">{{ category }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <ul>
+      {% for category in freeCategories %}
+      <li><a href="{% url 'filterCategory' category %}">{{ category }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 
   {% if user.is_authenticated %}
   <!-- display all filtered content if logged in -->

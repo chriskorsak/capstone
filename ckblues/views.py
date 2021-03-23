@@ -12,12 +12,34 @@ from .models import *
 ### VIEWS
 
 def index(request):
+  # all posts: create blank dict for storing categories and post counts with that category
+  allCategories = {}
+  allPosts = Post.objects.filter(published=True).order_by('category')
+  # iterate through posts and add category if not in dict, or increment if already in dict
+  for post in allPosts:
+    if post.category not in allCategories:
+      allCategories[post.category] = 1
+    else:
+      allCategories[post.category] += 1
+
+  # free posts: create blank dict for storing categories and post counts with that category
+  freeCategories = {}
+  freePosts = Post.objects.filter(published=True).filter(premium=False).order_by('category')
+  # iterate through posts and add category if not in dict, or increment if already in dict
+  for post in freePosts:
+    if post.category not in freeCategories:
+      freeCategories[post.category] = 1
+    else:
+      freeCategories[post.category] += 1
+
   return render(request, "ckblues/index.html", {
   "freePosts": Post.objects.filter(published=True).filter(premium=False).order_by('-date'),
-  "allPosts": Post.objects.filter(published=True).order_by('-date')
+  "allPosts": Post.objects.filter(published=True).order_by('-date'),
+  "allCategories": allCategories,
+  "freeCategories": freeCategories
   })
 
-def filter(request, category):
+def filterCategory(request, category):
   print(category)
   return render(request, "ckblues/index.html", {
   "freeFilteredPosts": Post.objects.filter(category=category).filter(published=True).filter(premium=False).order_by('-date'),

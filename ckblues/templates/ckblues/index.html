@@ -4,14 +4,14 @@
 {% block body %}
   <h2>CK Blues: Blog</h2>
 
-  {% for post in posts %}
+  {% for post in page_obj %}
     <section class="post">
       <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
       <p>{{ post.excerpt }}</p>
     </section>
   {% endfor %}
 
-  <h3>Filter Blog Posts:</h3>
+  <h3>Categories:</h3>
     <ul>
       {% for category in categories %}
         <li><a href="{% url 'filterCategory' category %}">{{ category }}</a></li>
@@ -20,22 +20,46 @@
       {% endfor %}
     </ul>
 
-  {% if user.is_authenticated %}
-  <!-- display all filtered content if logged in -->
-    {% for post in allFilteredPosts %}
-      <section class="post">
-        <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt }}</p>
-      </section>
-    {% endfor %}
-  {% else %}
-    <!-- display all free filtered posts if user not logged in -->
-    {% for post in freeFilteredPosts %}
-      <section class="post">
-        <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt }}</p>
-      </section>
-    {% endfor %}
-  {% endif %}
+  {% comment %} 
+    {% if user.is_authenticated %}
+    <!-- display all filtered content if logged in -->
+      {% for post in allFilteredPosts %}
+        <section class="post">
+          <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
+          <p>{{ post.excerpt }}</p>
+        </section>
+      {% endfor %}
+    {% else %}
+      <!-- display all free filtered posts if user not logged in -->
+      {% for post in freeFilteredPosts %}
+        <section class="post">
+          <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
+          <p>{{ post.excerpt }}</p>
+        </section>
+      {% endfor %}
+    {% endif %}
+  {% endcomment %}
+
+  <!-- navigation  -->
+  <nav class="pagination left-align">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+      {% endif %}
+
+        <li class="page-item disabled">
+          <a class="page-link" aria-disabled="true">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+          </a>
+        </li>
+
+      {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  
 
 {% endblock %}

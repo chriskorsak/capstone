@@ -18,6 +18,11 @@ def index(request):
   else:
     posts = Post.objects.filter(published=True).filter(premium=False).order_by('-date')
 
+  paginator = Paginator(posts, 10) # Show 10 posts per page.
+  page_number = request.GET.get('page')
+  page_obj = paginator.get_page(page_number)
+
+  # exctract distinct list of blog post categories
   categories = {}
   # iterate through posts and add category if not in dict, or increment if already in dict
   for post in posts:
@@ -25,10 +30,11 @@ def index(request):
       categories[post.category] = 1
     else:
       categories[post.category] += 1
-
+  
   return render(request, "ckblues/index.html", {
-  "posts": posts,
-  "categories": sorted(categories)
+  # "posts": posts,
+  "categories": sorted(categories),
+  'page_obj': page_obj
   })
 
 def filterCategory(request, category):

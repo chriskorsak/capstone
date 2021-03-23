@@ -5,6 +5,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("category/<str:category>", views.filterCategory, name="filterCategory"),
     path("post/<str:slug>", views.post, name="post"),
+    path("postComment/<int:postId>", views.postComment, name="postComment"),
     path("register", views.register, name="register"),
     path("login", views.loginView, name="login"),
     path("logout", views.logoutView, name="logout"),

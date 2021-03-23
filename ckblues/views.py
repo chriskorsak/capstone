@@ -47,10 +47,30 @@ def filterCategory(request, category):
   })
 
 def post(request, slug):
+  # get post
   post = Post.objects.get(slug=slug)
+  # get all comments associated with post
+  comments = PostComment.objects.filter(post=post)
+
   return render(request, "ckblues/post.html", {
-    "post": post
+    "post": post,
+    "comments": comments
   })
+
+@login_required
+def postComment(request, postId):
+  # get form input and user
+  commentText = request.POST["comment"]
+  user = request.user
+
+  post = Post.objects.get(pk=postId)
+
+  #create new Comment object with comment text, postId, and user
+  comment = PostComment(user=user, comment=commentText, post=post)
+  #save comment to database
+  comment.save()
+
+  return HttpResponseRedirect(reverse("post", args=(post.slug,)))
 
 def register(request):
   if request.method == "POST":

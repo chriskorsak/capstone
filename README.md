@@ -30,7 +30,7 @@ In this section of the website, users can submit a form which allows them to rec
 #### Feedback Behavior
 * When logged in, a link called *feedback* will be displayed in the navigation section. If a user clicks on this link, they will be directed to the feedback submission page.
 * The feedback page will display a form where the user can submit a youtube video link, select the video category from a dropdown menu (cover song, soloing, rhythm, improvisation, technique), and describe any questions or comments about their video submission.
-* Successfully submitting a feedback form will notify the user that their form has been received and is in the queue for review.
+* Successfully submitting a feedback form will redirect user to that feedback page where their information they inputted in the form is displayed.
 
 ### User Dashboard
 Users who are logged in will have a 'dashboard' which allows them to see their account details and their feedback submissions.

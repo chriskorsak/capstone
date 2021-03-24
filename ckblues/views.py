@@ -189,8 +189,27 @@ def feedback(request, feedbackId):
   if feedback.user != user:
     return render(request, "ckblues/feedback-form.html")
 
+  # get all comments associated with feedback
+  comments = FeedbackComment.objects.filter(feedback=feedback)
+
   return render(request, "ckblues/feedback.html", {
-    "feedback": feedback
+    "feedback": feedback,
+    "comments": comments
   })
+
+@login_required
+def feedbackComment(request, feedbackId):
+  # get form input and user
+  commentText = request.POST["comment"]
+  user = request.user
+
+  feedback = Feedback.objects.get(pk=feedbackId)
+
+  #create new Comment object with comment text, feedbackId, and user
+  comment = FeedbackComment(user=user, comment=commentText, feedback=feedback)
+  #save comment to database
+  comment.save()
+
+  return HttpResponseRedirect(reverse("feedback", args=(feedbackId,)))
 
 

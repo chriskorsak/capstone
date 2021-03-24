@@ -162,7 +162,7 @@ def updateCredentials(request, username):
   return HttpResponseRedirect(reverse("login"))
 
 @login_required
-def feedback(request):
+def feedbackForm(request):
   if request.method == "POST":
     # get user
     user = request.user
@@ -174,8 +174,23 @@ def feedback(request):
     #create and save new post using post model/object
     newFeedback = Feedback(user=user, video=video, category=category, note=note)
     newFeedback.save()
+    #send user to newly created feedback page
+    return HttpResponseRedirect(reverse("feedback", args=(newFeedback.id,)))
 
-    return render(request, "ckblues/index.html")
+  return render(request, "ckblues/feedback-form.html")
 
-  return render(request, "ckblues/feedback.html")
+@login_required
+def feedback(request, feedbackId):
+  user = request.user
+  feedback = Feedback.objects.get(id=feedbackId)
+  #strip off part of url so I can reformat url in page later: ex https://youtu.be/yTZootAFRGw becomes yTZootAFRGw
+  feedback.video = feedback.video[17:]
+  #reroute user if trying to access a feedback they didn't create
+  if feedback.user != user:
+    return render(request, "ckblues/feedback-form.html")
+
+  return render(request, "ckblues/feedback.html", {
+    "feedback": feedback
+  })
+
 

@@ -11,5 +11,6 @@ urlpatterns = [
     path("logout", views.logoutView, name="logout"),
     path("dashboard/<str:username>", views.dashboard, name="dashboard"),
     path("updatecredentials/<str:username>", views.updateCredentials, name="update-credentials"),
-    path("feedback", views.feedback, name="feedback")
+    path("feedback-form", views.feedbackForm, name="feedback-form"),
+    path("feedback/<int:feedbackId>", views.feedback, name="feedback")
 ]

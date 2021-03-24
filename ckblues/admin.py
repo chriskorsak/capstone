@@ -13,7 +13,7 @@ class PostCommentAdmin(admin.ModelAdmin):
   list_display = ("user", "date", "comment", "post")
 
 class FeedbackAdmin(admin.ModelAdmin):
-  list_display = ("user", "date", "video", "note")
+  list_display = ("user", "date", "category")
 
 class FeedbackCommentAdmin(admin.ModelAdmin):
   list_display = ("user", "date", "comment", "feedback")

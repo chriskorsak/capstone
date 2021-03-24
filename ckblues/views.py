@@ -161,7 +161,21 @@ def updateCredentials(request, username):
     user.save()
   return HttpResponseRedirect(reverse("login"))
 
-
+@login_required
 def feedback(request):
+  if request.method == "POST":
+    # get user
+    user = request.user
+    # get form inputs
+    video = request.POST["video-url"]
+    category = request.POST["video-category"]
+    note = request.POST["video-note"]
+    
+    #create and save new post using post model/object
+    newFeedback = Feedback(user=user, video=video, category=category, note=note)
+    newFeedback.save()
+
+    return render(request, "ckblues/index.html")
+
   return render(request, "ckblues/feedback.html")
 

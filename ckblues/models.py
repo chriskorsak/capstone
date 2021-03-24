@@ -32,10 +32,11 @@ class Feedback(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   date = models.DateTimeField(auto_now_add=True)
   video = models.URLField(max_length=200, blank=True)
-  note = models.CharField(max_length=256)
+  note = models.TextField(max_length=512)
+  category = models.CharField(max_length=64, blank=True)
 
   def __str__(self):
-    return f"User:{self.user} User:{self.video} Comment:{self.comment}"
+    return f"User:{self.user} User:{self.video} Comment:{self.note}"
 
 class FeedbackComment(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)

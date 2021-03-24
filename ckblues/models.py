@@ -11,7 +11,7 @@ class Post(models.Model):
   title = models.CharField(max_length=256)
   slug = models.SlugField(max_length=50, blank=True)
   body = RichTextField(blank=True, null=True)
-  excerpt = models.CharField(max_length=512, blank=True)
+  excerpt = models.TextField(max_length=512, blank=True)
   category = models.CharField(max_length=64, blank=True)
   premium = models.BooleanField(default=False)
   published = models.BooleanField(default=False)

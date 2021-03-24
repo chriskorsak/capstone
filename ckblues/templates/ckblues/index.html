@@ -7,7 +7,7 @@
   {% for post in page_obj %}
     <section class="post">
       <h3><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt }}</p>
+      <p>{{ post.excerpt | safe }}</p>
     </section>
   {% endfor %}
 

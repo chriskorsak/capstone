@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-  <h2>Blog</h2>
+  <h2>Category: {{ category }}</h2>
 
   {% for post in page_obj %}
     <section class="post">
@@ -11,12 +11,6 @@
     </section>
   {% endfor %}
 
-  <h3>Categories:</h3>
-    <ul>
-      {% for category in categories %}
-        <li><a href="{% url 'filterCategory' category %}">{{ category }}</a></li>
-      {% endfor %}
-    </ul>
 
   <!-- pagination navigation  -->
   <nav class="pagination left-align">

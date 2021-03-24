@@ -32,15 +32,23 @@ def index(request):
       categories[post.category] += 1
   
   return render(request, "ckblues/index.html", {
-  # "posts": posts,
   "categories": sorted(categories),
   'page_obj': page_obj
   })
 
 def filterCategory(request, category):
-  return render(request, "ckblues/index.html", {
-  "freeFilteredPosts": Post.objects.filter(category=category).filter(published=True).filter(premium=False).order_by('-date'),
-  "allFilteredPosts": Post.objects.filter(category=category).filter(published=True).order_by('-date')
+  if request.user.is_authenticated:
+    posts = Post.objects.filter(published=True).filter(category=category).order_by('-date')
+  else:
+    posts = Post.objects.filter(published=True).filter(premium=False).filter(category=category).order_by('-date')
+
+  paginator = Paginator(posts, 10) # Show 10 posts per page.
+  page_number = request.GET.get('page')
+  page_obj = paginator.get_page(page_number)
+
+  return render(request, "ckblues/category.html", {
+    "page_obj": page_obj,
+    "category": category
   })
 
 def post(request, slug):

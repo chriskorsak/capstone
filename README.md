@@ -31,11 +31,14 @@ In this section of the website, users can submit a form which allows them to rec
 * When logged in, a link called *feedback* will be displayed in the navigation section. If a user clicks on this link, they will be directed to the feedback submission page.
 * The feedback page will display a form where the user can submit a youtube video link, select the video category from a dropdown menu (cover song, soloing, rhythm, improvisation, technique), and describe any questions or comments about their video submission.
 * Successfully submitting a feedback form will redirect user to that feedback page where their information they inputted in the form is displayed.
+* If a feedback has been reviewed, the page will display a screencast video response from the administrator.
+* A feedback page will have a comment section.
 
 ### User Dashboard
 Users who are logged in will have a 'dashboard' which allows them to see their account details and their feedback submissions.
 #### User Dashboard Behavior
-* The dashboard will display a list of all feedbacks that have been submitted. Clicking on a feedback link will direct the user to a feedback page that displays a video screencast and any comments from the site administrator.
+* The dashboard will display a list of all feedbacks that have been submitted. Clicking on a feedback link will direct the user to a feedback page.
+* Each feedback will have a review status so the user knows if there is a screencast critique ready.
 * Users can update their email or password credentials via dashboard settings.
 
 ### Admin

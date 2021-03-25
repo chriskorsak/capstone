@@ -8,15 +8,19 @@ class UserAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
   list_display = ("author", "date", "title", "category", "premium", "published")
   prepopulated_fields = {"slug": ("title",)}
+  list_filter = ["date"]
 
 class PostCommentAdmin(admin.ModelAdmin):
   list_display = ("user", "date", "comment", "post")
+  list_filter = ["date"]
 
 class FeedbackAdmin(admin.ModelAdmin):
   list_display = ("id", "user", "date", "category", "reviewed")
+  list_filter = ["date", "reviewed"]
 
 class FeedbackCommentAdmin(admin.ModelAdmin):
   list_display = ("user", "date", "comment", "feedback")
+  list_filter = ["date"]
 
 # Register your models here.
 admin.site.register(User, UserAdmin)

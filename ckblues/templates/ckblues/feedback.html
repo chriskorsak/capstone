@@ -5,9 +5,12 @@
 <h2>{{ feedback.user }}</h2>
 <h3>Feedback for {{ feedback.category }}</h3>
 <p>Date received: {{ feedback.date }}</p>
-<p>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ feedback.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
+{% if feedback.reviewed == True %}
+  <h4>Feedback Screencast:</h4>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ feedback.videoResponse }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% endif %}
+<h4>Your Video Submission:</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ feedback.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>
   Notes:<br>
   {{ feedback.note }}

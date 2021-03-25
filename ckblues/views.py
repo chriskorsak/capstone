@@ -55,7 +55,7 @@ def post(request, slug):
   # get post
   post = Post.objects.get(slug=slug)
   # get all comments associated with post
-  comments = PostComment.objects.filter(post=post)
+  comments = PostComment.objects.filter(post=post).order_by('-date')
 
   return render(request, "ckblues/post.html", {
     "post": post,
@@ -131,7 +131,7 @@ def logoutView(request):
 
 def dashboard(request, username):
   user = request.user
-  feedbacks = Feedback.objects.filter(user=user)
+  feedbacks = Feedback.objects.filter(user=user).order_by('-date')
   return render(request, "ckblues/dashboard.html", {
     "username": username,
     "feedbacks": feedbacks
@@ -186,14 +186,18 @@ def feedbackForm(request):
 def feedback(request, feedbackId):
   user = request.user
   feedback = Feedback.objects.get(id=feedbackId)
-  #strip off part of url so I can reformat url in page later: ex https://youtu.be/yTZootAFRGw becomes yTZootAFRGw
-  feedback.video = feedback.video[17:]
+  
   #reroute user if trying to access a feedback they didn't create
   if feedback.user != user:
     return render(request, "ckblues/feedback-form.html")
 
+  #strip off parts of urls so I can reformat url in page later: ex https://youtu.be/yTZootAFRGw becomes yTZootAFRGw
+  feedback.video = feedback.video[17:]
+  if feedback.videoResponse:
+    feedback.videoResponse = feedback.videoResponse[17:]
+
   # get all comments associated with feedback
-  comments = FeedbackComment.objects.filter(feedback=feedback)
+  comments = FeedbackComment.objects.filter(feedback=feedback).order_by('-date')
 
   return render(request, "ckblues/feedback.html", {
     "feedback": feedback,

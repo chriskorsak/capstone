@@ -6,22 +6,32 @@
   
   <!-- display feedbacks -->
   <section>
-    <h3>My Feedback:</h3>
-    <table>
-      {% for feedback in feedbacks %}
+    <h3>My Feedback Submissions:</h3>
+    <table class="table">
+      <thead>
         <tr>
-          <td>{{ feedback.date }}</td>
-          <td>{{ feedback.category }}</td>
-          <td>
-            {% if feedback.reviewed %}
-              Reviewed
-            {% else %}
-              Not Reviewed
-            {% endif %}
-          </td>
-          <td><a href="{% url 'feedback' feedback.id %}">View feedback</a></td>
+          <th scope="col">Date</th>
+          <th scope="col">Category</th>
+          <th scope="col">Review Status</th>
+          <th scope="col">Link</th>
         </tr>
-      {% endfor %}
+      </thead>
+      <tbody>
+        {% for feedback in feedbacks %}
+          <tr>
+            <td>{{ feedback.date }}</td>
+            <td>{{ feedback.category }}</td>
+            <td>
+              {% if feedback.reviewed %}
+                Reviewed
+              {% else %}
+                Not Reviewed
+              {% endif %}
+            </td>
+            <td><a href="{% url 'feedback' feedback.id %}">View feedback</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
   </section>
 

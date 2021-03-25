@@ -34,6 +34,8 @@ class Feedback(models.Model):
   video = models.URLField(max_length=200, blank=True)
   note = models.TextField(max_length=512)
   category = models.CharField(max_length=64, blank=True)
+  reviewed = models.BooleanField(default=False)
+  videoResponse = models.URLField(max_length=200, blank=True)
 
   def __str__(self):
     return f"User:{self.user} User:{self.video} Comment:{self.note}"

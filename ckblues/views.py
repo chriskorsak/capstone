@@ -130,8 +130,11 @@ def logoutView(request):
   return HttpResponseRedirect(reverse("index"))
 
 def dashboard(request, username):
+  user = request.user
+  feedbacks = Feedback.objects.filter(user=user)
   return render(request, "ckblues/dashboard.html", {
-    "username": username
+    "username": username,
+    "feedbacks": feedbacks
   })
 
 def updateCredentials(request, username):

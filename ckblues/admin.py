@@ -21,6 +21,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 class FeedbackCommentAdmin(admin.ModelAdmin):
   list_display = ("user", "date", "comment", "feedback")
   list_filter = ["date"]
+  search_fields = ['comment']
 
 # Register your models here.
 admin.site.register(User, UserAdmin)

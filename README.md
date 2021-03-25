@@ -69,6 +69,3 @@ TODO
 <!-- If you’ve added any Python packages that need to be installed in order to run your web application, be sure to add them to a requirements.txt file! -->
 using django cdeditor (rich text editor)
 * run pip install django-ckeditor in terminal
-
-<!-- * Administrators can flag posts as published, unpublished, free, or premium. -->
-

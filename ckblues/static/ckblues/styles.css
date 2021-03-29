@@ -1,6 +1,19 @@
+/* * {
+  border: 1px solid black;
+} */
+
+/* header, nav logo */
+img.logo {
+  height: 120px;
+}
+
+.nav-item {
+  min-width: 100px;
+}
+
 section.post {
   border: 1px solid black;
-  margin: 1em;
+  margin-bottom: 1em;
   padding: 1em;
 }
 
@@ -8,10 +21,29 @@ section.post {
   display: none;
 }
 
+/* main elements */
+
+h2 {
+  margin: 1em 0em;
+}
+
+a {
+  color: #2a6a95;
+}
+a:hover {
+  color: #19415c;
+  text-decoration: none;
+}
+
+ul.category {
+  margin: 0;
+  padding: 0;
+}
+
 /* comment section of feedback and post */
 
 li {
-  list-style-type: none;
+  list-style: none;
 }
 
 div.comment-section {
@@ -23,4 +55,12 @@ li.comment {
   padding: 15px 25px;
   margin: 15px 0px;
   background-color: rgb(235, 235, 235);
+}
+
+/* media query for logo */
+@media (max-width: 576px) {
+  img.logo {
+    width: 100%;
+    height: auto;
+  }
 }

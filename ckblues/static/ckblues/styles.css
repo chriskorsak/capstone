@@ -8,7 +8,7 @@
   padding-top: 1em;
 }
 
-/* logo styles when screen > 576px; */
+/* logo styles when screen >= 576px; */
 img.logo {
   height: 120px;
 }
@@ -18,13 +18,18 @@ img.logo {
   text-align: center;
 }
 
-/* blog post excerpt on index and all forms */
+/* blog post excerpt on index, welcome on index, and all forms */
 section.post,
-form {
+form,
+div#welcome {
   margin-bottom: 1em;
   padding: 1em;
   background-color:#f8f9fa;
   border-radius: 6px;
+}
+
+section.post {
+  overflow: hidden;
 }
 
 /* in dashboard, update email and or password not displayed by default */
@@ -49,10 +54,12 @@ h3 {
   font-size: 120%;
 }
 
-a {
+a,
+span#dismiss {
   color: #2a6a95;
 }
-a:hover {
+a:hover,
+span#dismiss:hover {
   color: #1e4b6a;
   text-decoration: none;
 }
@@ -73,7 +80,7 @@ ul.category {
 
 .btn-primary:hover,
 .btn-primary:active {
-  background-color: #1e4b6a;
+  background-color: #1e4b6a !important;
 }
 
 /* pagination section styles */
@@ -84,6 +91,12 @@ ul.category {
 .page-link:hover {
   background-color:#f8f9fa;
   color: #1e4b6a;
+}
+
+/* youtube video width when screen >= 768 */
+iframe {
+  width: 560px;
+  height: 315px;
 }
 
 /* comment section of feedback and post */
@@ -103,10 +116,24 @@ li.comment {
   background-color: rgb(235, 235, 235);
 }
 
-/* media query for logo */
+/* media queries for logo, nav nav links, youtube videos */
+@media (max-width: 976px) {
+  .nav-item {
+    text-align: right;
+  }
+}
 @media (max-width: 576px) {
   img.logo {
     width: 100%;
+    height: auto;
+  }
+  .nav-item {
+    text-align: left;
+  }
+
+  /* youtube video on phones */
+  iframe {
+    width: auto;
     height: auto;
   }
 }

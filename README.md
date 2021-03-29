@@ -3,7 +3,7 @@ __By Chris Korsak__
 
 ## Project Overview
 
-My Harvard CS50 Web capstone is called __*CK Blues*__. This is a web application that helps guitar players improve their guitar playing. This website provides guitar lessons, individual feedback, and backing tracks to jam with. The application consists of a blog with both free and premium content. Users can sign up for an account to access premium content and submit video links of themselves playing guitar for individual feedback.
+My Harvard CS50 Web capstone is called __*CK Blues*__. This is a web application that helps guitar players improve their guitar playing. This website provides guitar lessons, backing tracks to jam with, and individual feedback. The application consists of a blog with both free and premium content. Users can sign up for an account to access premium content and submit video links of themselves playing guitar for individual feedback.
 
 ## Website Sections
 

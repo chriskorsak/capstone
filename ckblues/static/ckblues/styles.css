@@ -8,6 +8,7 @@
   padding-top: 1em;
 }
 
+/* logo styles when screen > 576px; */
 img.logo {
   height: 120px;
 }
@@ -17,12 +18,16 @@ img.logo {
   text-align: center;
 }
 
-section.post {
+/* blog post excerpt on index and all forms */
+section.post,
+form {
   margin-bottom: 1em;
   padding: 1em;
-  background-color:#f7f9fa;
+  background-color:#f8f9fa;
+  border-radius: 6px;
 }
 
+/* in dashboard, update email and or password not displayed by default */
 #update-section {
   display: none;
 }
@@ -52,8 +57,9 @@ a:hover {
   text-decoration: none;
 }
 
+/* table rows in dashboard feedback */
 tbody > tr:hover {
-  background-color:#f7f9fa;
+  background-color:#f8f9fa;
 }
 
 ul.category {
@@ -68,6 +74,16 @@ ul.category {
 .btn-primary:hover,
 .btn-primary:active {
   background-color: #1e4b6a;
+}
+
+/* pagination section styles */
+.page-link {
+  color: #2a6a95;
+}
+
+.page-link:hover {
+  background-color:#f8f9fa;
+  color: #1e4b6a;
 }
 
 /* comment section of feedback and post */

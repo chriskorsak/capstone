@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-  <h2>FEEDBACK</h2>
+  <h2>Feedback Form</h2>
   <form action="{% url 'feedback-form' %}" method="POST">
     {% csrf_token %}
       <div class="form-group">

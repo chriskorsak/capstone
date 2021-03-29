@@ -42,7 +42,7 @@
 
   <!-- update credentials -->
   <section id="update-section">
-    <h3>Update email and/or password</h3>
+    <p>Update email and/or password</p>
     <form action="{% url 'update-credentials' username %}" method="POST">
       {% csrf_token %}
       <div class="form-group">

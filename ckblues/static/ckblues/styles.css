@@ -2,42 +2,72 @@
   border: 1px solid black;
 } */
 
-/* header, nav logo */
+/* styles for layout.html, main page sections */
+.main,
+.sidebar {
+  padding-top: 1em;
+}
+
 img.logo {
   height: 120px;
 }
 
 .nav-item {
   min-width: 100px;
+  text-align: center;
 }
 
 section.post {
-  border: 1px solid black;
   margin-bottom: 1em;
   padding: 1em;
+  background-color:#f7f9fa;
 }
 
 #update-section {
   display: none;
 }
 
-/* main elements */
+footer {
+  text-align: center;
+  padding: 2em 0;
+  opacity: 50%;
+}
 
-h2 {
+/* elements */
+
+h2,
+h3 {
   margin: 1em 0em;
+}
+
+h3 {
+  font-size: 120%;
 }
 
 a {
   color: #2a6a95;
 }
 a:hover {
-  color: #19415c;
+  color: #1e4b6a;
   text-decoration: none;
+}
+
+tbody > tr:hover {
+  background-color:#f7f9fa;
 }
 
 ul.category {
   margin: 0;
   padding: 0;
+}
+
+.btn-primary {
+  background-color: #2a6a95;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: #1e4b6a;
 }
 
 /* comment section of feedback and post */

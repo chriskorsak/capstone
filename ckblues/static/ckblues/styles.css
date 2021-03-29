@@ -7,3 +7,20 @@ section.post {
 #update-section {
   display: none;
 }
+
+/* comment section of feedback and post */
+
+li {
+  list-style-type: none;
+}
+
+div.comment-section {
+  background-color: rgb(245, 245, 245);
+  padding: 1%;
+}
+
+li.comment {
+  padding: 15px 25px;
+  margin: 15px 0px;
+  background-color: rgb(235, 235, 235);
+}

@@ -35,21 +35,32 @@ function updateCredentials(updateButton) {
   // enable submit button if user types two new matching passwords
   let password = document.querySelector('#password');
   let confirmation = document.querySelector('#confirmation');
-  // Listen for input to be typed into the input field
-  confirmation.onkeyup = () => {
+  let warning = document.querySelector('#password-match-warning');
+  // Listen for onkeyup in confirmation input field
+  confirmation.onkeyup = function() {
     if (password.value === confirmation.value && password.value.length !== 0) {
       submitUpdateButton.disabled = false;
-    }
-    else {
-      submitUpdateButton.disabled = true;
+      warning.textContent = "Passwords match";
+    } else if (confirmation.value.length > 0) {
+        submitUpdateButton.disabled = true;
+        warning.textContent = "Passwords don't match";
+    } else {
+        submitUpdateButton.disabled = true;
+        warning.textContent = "";
     }
   }
 
-  //get cancel update button and add event listener
+  //run if user clicks cancel button on form
   let cancel = document.querySelector('#cancel-update-button');
   cancel.addEventListener('click', function() {
+    //show/hide sections and buttons
     updateSection.style.display = 'none';
     feedbackSection.style.display = 'block';
     updateButton.style.display = 'block';
+    //clear out input fields and password match warning text
+    email.value = "";
+    password.value = "";
+    confirmation.value = "";
+    warning.textContent = "";
   })
 }

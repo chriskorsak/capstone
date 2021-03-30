@@ -42,7 +42,8 @@ div#welcome {
 footer,
 .post-category,
 .comment-date-user,
-.feedback-date-received {
+.feedback-date-received,
+#password-match-warning {
   font-size: 90%;
   opacity: 40%;
 }

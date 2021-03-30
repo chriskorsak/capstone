@@ -27,6 +27,9 @@ div#welcome {
   background-color:#f8f9fa;
   border-radius: 6px;
 }
+div#welcome {
+  padding: 2em;
+}
 
 section.post {
   overflow: hidden;
@@ -44,6 +47,10 @@ footer {
 }
 
 /* elements */
+
+.table {
+  overflow: hidden !important;
+}
 
 h2,
 h3 {
@@ -81,6 +88,11 @@ ul.category {
 .btn-primary:hover,
 .btn-primary:active {
   background-color: #1e4b6a !important;
+}
+
+.btn:disabled {
+  background-color: #d6d6d6!important;
+  border: none;
 }
 
 /* pagination section styles */
@@ -122,6 +134,40 @@ li.comment {
     text-align: right;
   }
 }
+
+/* table display on mobile */
+@media (max-width: 768px) {
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+  thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+  td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative !important;
+		padding-left: 50% !important; 
+	}
+	
+	td:before { 
+		/* Acts like the table header */
+		position: absolute;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+    font-weight: 600;
+	}
+
+	td:nth-of-type(1):before { content: "Date"; }
+	td:nth-of-type(2):before { content: "Category"; }
+	td:nth-of-type(3):before { content: "Review Status"; }
+	td:nth-of-type(4):before { content: "Link"; }
+
 @media (max-width: 576px) {
   img.logo {
     width: 100%;
@@ -133,7 +179,7 @@ li.comment {
 
   /* youtube video on phones */
   iframe {
-    width: auto;
+    width: 100%;
     height: auto;
   }
 }

@@ -24,7 +24,7 @@
       <tbody>
         {% for feedback in feedbacks %}
           <tr>
-            <td>{{ feedback.date }}</td>
+            <td>{{ feedback.date.month }}-{{ feedback.date.day }}-{{ feedback.date.year }}</td>
             <td>{{ feedback.category }}</td>
             <td>
               {% if feedback.reviewed %}

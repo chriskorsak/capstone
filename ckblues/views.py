@@ -18,7 +18,7 @@ def index(request):
   else:
     posts = Post.objects.filter(published=True).filter(premium=False).order_by('-date')
 
-  paginator = Paginator(posts, 10) # Show 10 posts per page.
+  paginator = Paginator(posts, 8) # Show 8 posts per page.
   page_number = request.GET.get('page')
   page_obj = paginator.get_page(page_number)
 
@@ -42,7 +42,7 @@ def filterCategory(request, category):
   else:
     posts = Post.objects.filter(published=True).filter(premium=False).filter(category=category).order_by('-date')
 
-  paginator = Paginator(posts, 10) # Show 10 posts per page.
+  paginator = Paginator(posts, 8) # Show 8 posts per page.
   page_number = request.GET.get('page')
   page_obj = paginator.get_page(page_number)
 
@@ -129,6 +129,7 @@ def logoutView(request):
   logout(request)
   return HttpResponseRedirect(reverse("index"))
 
+@login_required
 def dashboard(request, username):
   user = request.user
   feedbacks = Feedback.objects.filter(user=user).order_by('-date')
@@ -137,6 +138,7 @@ def dashboard(request, username):
     "feedbacks": feedbacks
   })
 
+@login_required
 def updateCredentials(request, username):
   if request.method == "POST":
     # get form inputs

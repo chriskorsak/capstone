@@ -2,19 +2,18 @@
 {% load static %}
 
 {% block body %}
-<h2>{{ feedback.user }}</h2>
-<h3>Feedback for {{ feedback.category }}</h3>
-<p>Date received: {{ feedback.date }}</p>
-{% if feedback.reviewed == True %}
-  <h4>Feedback Screencast:</h4>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ feedback.videoResponse }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-{% endif %}
-<h4>Your Video Submission:</h4>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ feedback.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>
-  Notes:<br>
-  {{ feedback.note }}
-</p>
+  <h1>Feedback for {{ feedback.user }} - {{ feedback.category }}</h1>
+  <p class="feedback-date-received">Date received: {{ feedback.date }}</p>
+  {% if feedback.reviewed == True %}
+    <h2>Feedback Screencast:</h2>
+    <iframe src="https://www.youtube.com/embed/{{ feedback.videoResponse }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  {% endif %}
+  <h2>Your Video Submission:</h2>
+  <iframe src="https://www.youtube.com/embed/{{ feedback.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <h3>Your notes:</h3>
+  <div>
+    {{ feedback.note }}
+  </div>
 
 
     <h3>Leave a Comment</h3>
@@ -27,18 +26,16 @@
     </form>
 
   <h3>Comments</h3>
-  <div class="comment-section">
-  <ul>
-  {% for comment in comments %}
-    <li class="comment">
-      On {{ comment.date }}, {{ comment.user.username }} wrote:
-      <br>
-      {{ comment.comment }}
-    </li>
-  {% empty %}
-    <p>No Comments yet!</p>
-  {% endfor %}
-  </ul>
-  </div>
+    <ul class="comments">
+    {% for comment in comments %}
+      <li class="comment">
+        <span class="comment-date-user">On {{ comment.date }}, {{ comment.user.username }} wrote:</span>
+        <br>
+        {{ comment.comment }}
+      </li>
+    {% empty %}
+      <p>No Comments yet!</p>
+    {% endfor %}
+    </ul>
 
 {% endblock %}

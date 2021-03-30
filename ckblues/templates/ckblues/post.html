@@ -2,40 +2,43 @@
 {% load static %}
 
 {% block body %}
-  {% if user.is_authenticated or post.premium == False %}
-    <h2>{{ post.title }}</h2>
-    <p>Category: {{ post.category }}</p>
+  <div class="row">
+    <div class="col-sm-10 main">
+      {% if user.is_authenticated or post.premium == False %}
+        <h1>{{ post.title }}</h1>
+        <p class="post-category">Category: {{ post.category }}</p>
 
-    {{ post.body | safe }}
+        {{ post.body | safe }}
 
-  {% else %}
-    <p>To see this article, <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> for an account!</p>
-  {% endif %}
+      {% else %}
+        <p>To see this article, <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> for an account!</p>
+      {% endif %}
 
-  {% if user.is_authenticated %}
-    <h3>Leave a Comment</h3>
-    <form action="{% url 'postComment' post.id %}" method="POST">
-      {% csrf_token %}
-      <div class="form-group">
-        <input type="text" name="comment" class="form-control" placeholder="Comment" required>
-      </div>
-      <input type="submit" value="Submit" class="btn btn-sm btn-primary">
-    </form>
-  {% else %}
-    <h3>Sign in to leave a comment</h3>
-  {% endif %}
+      {% if user.is_authenticated %}
+        <h3>Leave a Comment</h3>
+        <form action="{% url 'postComment' post.id %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" name="comment" class="form-control" placeholder="Comment" required>
+          </div>
+          <input type="submit" value="Submit" class="btn btn-sm btn-primary">
+        </form>
+      {% else %}
+        <h3>Sign in to leave a comment</h3>
+      {% endif %}
 
-  <h3>Comments</h3>
-  <ul>
-  {% for comment in comments %}
-    <li>
-      On {{ comment.date }}, {{ comment.user.username }} wrote:
-      <br>
-      {{ comment.comment }}
-    </li>
-  {% empty %}
-    <p>No Comments yet!</p>
-  {% endfor %}
-  </ul>
-
+      <h3>Comments</h3>
+      <ul class="comments">
+      {% for comment in comments %}
+        <li class="comment">
+          <span class="comment-date-user">On {{ comment.date }}, {{ comment.user.username }} wrote:</span>
+          <br>
+          {{ comment.comment }}
+        </li>
+      {% empty %}
+        <p>No Comments yet!</p>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% endblock %}

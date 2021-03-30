@@ -1,7 +1,3 @@
-/* * {
-  border: 1px solid black;
-} */
-
 /* styles for layout.html, main page sections */
 .main,
 .sidebar {
@@ -18,10 +14,11 @@ img.logo {
   text-align: center;
 }
 
-/* blog post excerpt on index, welcome on index, and all forms */
+/* blog post excerpt on index, welcome on index, all forms, and comment section */
 section.post,
 form,
-div#welcome {
+div#welcome,
+ul.comments {
   margin-bottom: 1em;
   padding: 1em;
   background-color:#f8f9fa;
@@ -31,8 +28,10 @@ div#welcome {
   padding: 2em;
 }
 
-section.post {
-  overflow: hidden;
+.comment {
+  background-color: #ffffff !important;
+  padding: 1em;
+  border-radius: 6px;
 }
 
 /* in dashboard, update email and or password not displayed by default */
@@ -40,17 +39,20 @@ section.post {
   display: none;
 }
 
+footer,
+.post-category,
+.comment-date-user,
+.feedback-date-received {
+  font-size: 90%;
+  opacity: 40%;
+}
+
 footer {
   text-align: center;
   padding: 2em 0;
-  opacity: 50%;
 }
 
 /* elements */
-
-.table {
-  overflow: hidden !important;
-}
 
 h2,
 h3 {
@@ -167,6 +169,7 @@ li.comment {
 	td:nth-of-type(2):before { content: "Category"; }
 	td:nth-of-type(3):before { content: "Review Status"; }
 	td:nth-of-type(4):before { content: "Link"; }
+}
 
 @media (max-width: 576px) {
   img.logo {

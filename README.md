@@ -23,6 +23,7 @@ In order to access 'premium' content, the user has to register and log in to the
 ### Blog
 The main section of this website is a blog that is filled with content (both free and premium) to help improve guitar playing. Blog articles will consist of lessons, exercises, and backing tracks to solo over.
 #### Blog Behavior
+* When a user is not logged in, a welcome section will display at the top of the screen. This can be dismissed and never display again.
 * When a user navigates to the homepage, the blog will be populated with a number of 'free' posts that do not require the user to log in.
 * When a user is logged in, the blog will be populated with both 'free' and 'premium' content.
 * Users can filter blog posts by category to more easily find content they are looking for (lessons, exercises, backing tracks).
@@ -57,21 +58,35 @@ This utilizes the Django admin app in order to take care of site administration.
 I believe this project satisfies the complexity requirements and is disinct from the previous class projects for the following reasons:
 
 * This application is a blog-style website with both free and premium content, which is a structure we have not attempted in the class.
-* This project uses five Django models for keeping track of data. This is a more complext database than any project I've created in this class.
+* This project uses five Django models for keeping track of data. This is a more complex database than any project I've created in this class.
 * Because blog post content can be diverse, a user-friendly way to create this content is needed. I have installed a rich text editor package called [*ckeditor*](https://github.com/django-ckeditor/django-ckeditor) to achieve this.
-* This application is responsive to all screen-sizes.
+* This application uses a combination of custom CSS media queries and [Bootstrap](https://getbootstrap.com/) to be responsive to all screen-sizes.
 
-## File Contents
+## Notable files and directories in addition to the default Django project files
 
-TODO (list contents of files I created)
+* `/ckblues` - app directory
+  * `/static/ckblues` - directory of all static files
+    * `/images` - directory of all website images
+    * `scripts.js` - javascript file for user dashboard interface behavior
+    * `scripts2.js` - javascript file for homepage welcome message behavior
+    * `styles.css` - cascading style sheet for site
+  * `/templates/ckblues` - directory of all html website templates
+    * `category.html, dashboard.html, feedback-form.html, feedback.html, index.html, layout.html, login.html, post.html, register.html` - html template files
+  * `admin.py` - django models registered with admin app
+  * `models.py` - django database models
+  * `urls.py` - url patterns for application
+  * `views.py` - django/python views/functions that are associated with application urls.
+* `.gitignore` - list of files to not be tracked by git
+* `db.sqlite3` - the database file
 
 ## Technologies Used
 * Django (Python)
 * HTML
-* CSS
+* CSS and Bootstrap
 * Javascript
 
 ## How To Run This Application
 
 * Terminal: $ git clone https://github.com/chriskorsak/capstone.git
 * Terminal: $ pip install -r requirements.txt
+* Terminal: $ python3 manage.py runserver

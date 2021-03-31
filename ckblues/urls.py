@@ -15,5 +15,3 @@ urlpatterns = [
     path("feedback/<int:feedbackId>", views.feedback, name="feedback"),
     path("feedbackComment/<int:feedbackId>", views.feedbackComment, name="feedbackComment")
 ]
-
-#check to make sure my naming conventions are consistent!!!!

@@ -71,7 +71,7 @@ I believe this project satisfies the complexity requirements and is disinct from
     * `scripts2.js` - javascript file for homepage welcome message behavior
     * `styles.css` - cascading style sheet for site
   * `/templates/ckblues` - directory of all html website templates
-    * `category.html, dashboard.html, feedback-form.html, feedback.html, index.html, layout.html, login.html, post.html, register.html` - html template files
+    * `404.html, category.html, dashboard.html, feedback-form.html, feedback.html, index.html, layout.html, login.html, post.html, register.html` - html template files
   * `admin.py` - django models registered with admin app
   * `models.py` - django database models
   * `urls.py` - url patterns for application

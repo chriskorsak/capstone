@@ -24,7 +24,7 @@
           <input type="submit" value="Submit" class="btn btn-sm btn-primary">
         </form>
       {% else %}
-        <h3>Log in to leave a comment</h3>
+        <p>(<a href="{% url 'login' %}">Log in</a> to leave a comment)</p>
       {% endif %}
 
       <h3>Comments</h3>

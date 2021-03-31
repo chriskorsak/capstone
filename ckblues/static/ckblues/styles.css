@@ -55,6 +55,10 @@ footer {
 
 /* elements */
 
+h1 {
+  font-size: 2em;
+}
+
 h2,
 h3 {
   margin: 1em 0em;
@@ -64,12 +68,10 @@ h3 {
   font-size: 120%;
 }
 
-a,
-span#dismiss {
+a {
   color: #2a6a95;
 }
-a:hover,
-span#dismiss:hover {
+a:hover {
   color: #1e4b6a;
   text-decoration: none;
 }
@@ -131,6 +133,13 @@ li.comment {
   background-color: rgb(235, 235, 235);
 }
 
+/* dismiss welcome message 'x' icon */
+.close {
+  position: relative;
+  top: -25px;
+  left: 20px;
+}
+
 /* media queries for logo, nav nav links, youtube videos */
 @media (max-width: 976px) {
   .nav-item {
@@ -144,13 +153,13 @@ li.comment {
 		display: block; 
 	}
   thead tr { 
+    /* move table head outside of screen */
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
 	}
   td { 
 		/* Behave  like a "row" */
-		border: none;
 		border-bottom: 1px solid #eee; 
 		position: relative !important;
 		padding-left: 50% !important; 

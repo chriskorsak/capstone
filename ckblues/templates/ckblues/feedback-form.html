@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block body %}
+<div class="row">
+
+  <div class="col-sm-10 main">
   <h2>Feedback Form</h2>
   <form action="{% url 'feedback-form' %}" method="POST">
     {% csrf_token %}
@@ -26,4 +29,6 @@
 
       <input type="submit" value="Submit" class="btn btn-sm btn-primary">
   </form>
+  </div>
+  </div>
 {% endblock %}

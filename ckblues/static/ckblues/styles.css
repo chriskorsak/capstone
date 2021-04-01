@@ -117,6 +117,12 @@ iframe {
   height: 315px;
 }
 
+.header-image {
+  max-width: 100%;
+  height: auto;
+  margin: 1em 0;
+}
+
 /* comment section of feedback and post */
 
 ul > li {

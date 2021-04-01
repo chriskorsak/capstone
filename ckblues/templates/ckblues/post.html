@@ -7,6 +7,9 @@
       {% if user.is_authenticated or post.premium == False %}
         <h1>{{ post.title }}</h1>
         <p class="post-category">Category: {{ post.category }}</p>
+        {% if post.headerImage %}
+          <img src="{{ post.headerImage.url }}" alt="{{ post.title }}" class="header-image">
+        {% endif %}
 
         {{ post.body | safe }}
 

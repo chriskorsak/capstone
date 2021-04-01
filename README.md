@@ -1,6 +1,8 @@
 # Harvard CS50 Web Capstone: *CK Blues*
 __By Chris Korsak__
 
+April, 2021
+
 ## Project Overview
 
 <img src="ckblues/static/ckblues/images/logo_w_text_outline_2.png" alt="CK Blues" width="350">

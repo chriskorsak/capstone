@@ -54,6 +54,7 @@
   <!-- update credentials -->
   <section id="update-section">
     <p>Update email and/or password</p>
+    <p class="light-text">Note: you will have to log back in with your new credentials after submitting this form.</p>
     <form action="{% url 'update-credentials' username %}" method="POST">
       {% csrf_token %}
       <div class="form-group">

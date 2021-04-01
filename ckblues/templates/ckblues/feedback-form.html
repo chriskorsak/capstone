@@ -6,6 +6,15 @@
 
   <div class="col-sm-10 main">
   <h2>Feedback Form</h2>
+  <p>Being a guitar player, you know that feedback can be a great thing! That being said, it can be difficult to find honest, supportive, and productive critique about your guitar playing. That's why I created this service on ckblues.com. <strong>Here's how it works:</strong></p>
+  <ol>
+    <li>Create a video of yourself playing guitar that demonstrates what you need help with.</li>
+    <li>Upload it to Youtube.</li>
+    <li>Copy the Youtube share link to your video.</li>
+    <li>Paste the link bellow and fill out the rest of the form.</li>
+  </ol>
+  <p>I will review your video and any notes you've submitted. After that, you will receive a personalized video screencast (aka feedback) to help improve your guitar playing.</p>
+  <p>Maybe you have a question on scale choice over the blues? Having an issue with barre chords? Whatever question you have, record yourself playing to demonstrate, and I'll steer you in the right direction.</p>
   <form action="{% url 'feedback-form' %}" method="POST">
     {% csrf_token %}
       <div class="form-group">

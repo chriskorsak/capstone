@@ -43,7 +43,8 @@ footer,
 .post-category,
 .comment-date-user,
 .feedback-date-received,
-#password-match-warning {
+#password-match-warning,
+.light-text {
   font-size: 90%;
   opacity: 40%;
 }
@@ -118,7 +119,7 @@ iframe {
 
 /* comment section of feedback and post */
 
-li {
+ul > li {
   list-style: none;
 }
 

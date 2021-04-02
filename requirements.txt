@@ -12,6 +12,7 @@ jellyfish==0.8.2
 lib50==2.0.9
 markdown2==2.3.10
 pexpect==4.8.0
+Pillow==8.1.2
 ptyprocess==0.6.0
 pycparser==2.20
 pytz==2020.4

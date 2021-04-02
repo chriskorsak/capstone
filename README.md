@@ -87,8 +87,6 @@ I believe this project satisfies the complexity requirements and is disinct from
 * CSS and Bootstrap
 * Javascript
 
-## How To Run This Application
+## Copyright
 
-* Terminal: $ git clone https://github.com/chriskorsak/capstone.git
-* Terminal: $ pip install -r requirements.txt
-* Terminal: $ python3 manage.py runserver
+Copyright Chris Korsak, 2021. All rights reserved.

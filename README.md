@@ -13,10 +13,6 @@ My Harvard CS50 Web capstone is called __*CK Blues*__. This is a web application
 
 In 2013, I created some blues guitar backing tracks under the name of Ck Blues. For a short while, I had a simple wordpress blog to support the backing tracks and provide some guitar lessons. In the last few years I've wanted to create a new guitar lesson website from scratch. This is my implementation using all the knowledge I've learned from [Harvard CS50's](https://cs50.harvard.edu/web/2020/) Web Programming with Python and Javascript.
 
-## Project Screencast
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/mRYtvquFvDM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## Website Sections
 
 ### Login/Logout/Register
